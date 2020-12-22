@@ -8,7 +8,7 @@ class FolderList extends Component{
     const folders = STORE.folders
 
     return(
-      <aside>
+
         <ul className='BookmarkList__list' aria-live='polite'>
           {folders.map(folder =>
               <FolderItem
@@ -17,7 +17,7 @@ class FolderList extends Component{
               />
             )}
         </ul>
-      </aside>
+
     )
   }
 }

@@ -9,9 +9,9 @@ export default function NotePage(props) {
   )
   
   return (
-    <article className='Note'>
-      <h2>{note.name}</h2>
-      
-    </article>
+      <article className='Note'>
+        <h2>{note.name}</h2>
+        <p>{note.content}</p>
+      </article>
   )
 }
