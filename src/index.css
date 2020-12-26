@@ -17,11 +17,25 @@ code {
   margin: 0 auto;
 }
 
+h1, h2, h3 {
+  margin: 0 auto;
+}
+
 header{
-  background: gray;
+  background: white;
   padding: 24px 16px;
   width: 100%;
   display: block;
+  text-decoration: none;
+}
+
+a{
+  text-decoration: none;
+  color: darkslategray
+}
+
+a:hover, a:active{
+  color: green;
 }
 
 .container{
@@ -29,21 +43,95 @@ header{
   display: flex;
 }
 
-.sidebar{
+nav{
   width: 20%;
   max-width: 240px;
-  background: lightgray;
   margin: 0 auto;
 }
 
-.main{
+main{
   width: 80%;
   max-width: 960px;
   margin: 0 auto;
-  padding: 48px;
+  padding: 0 48px;
 }
 
 .folder{
   display: block;
   padding: 8px 16px;
 }
+
+.Note{
+  margin: 0 auto;
+  padding: 24px 16px;
+  border-bottom: 1px solid lightgray;
+  width: 100%;
+}
+
+.Note__dates{
+  margin: 16px 0;
+}
+
+
+ul, ol {
+  list-style-type: none;
+  margin-block-start: 0 ;
+  padding: 0;
+}
+
+.NoteListNav__add-folder-button {
+  margin: 20px auto;
+}
+.NoteListNav__add-folder-button:hover {
+  background-color: #29862e;
+  color: white;
+}
+
+.NoteListNav__folder-link {
+  display: block;
+  font-size: 20px;
+  padding: 8px 16px;
+  text-decoration: none;
+  background: white;
+  border-bottom: 1px solid lightgray;
+}
+.NoteListNav__folder-link:hover {
+  color: green;
+  cursor: pointer;
+  box-shadow: inset 0 0 0 1px green ;
+}
+.NoteListNav__folder-link.active {
+  background-color: darkgreen;
+  color: white;
+}
+
+.NoteListNav__num-notes {
+  color: black;
+  display: block;
+  float: right;
+  font-size: 10px;
+  margin-top: 4px;
+}
+
+.NavCircleButton {
+  font-size: 18px;
+  padding: 16px 16px;
+  display: block;
+}
+
+.NavCircleButton:hover {
+  color: green;
+  cursor: pointer;
+  box-shadow: inset 0 0 0 1px green ;
+}
+
+.NoteListMain__button-container{
+  display: block;
+}
+
+.icon{
+  font-size: 14px;
+  margin: 0 8px 2px 0;
+  color: inherit;
+}
+
