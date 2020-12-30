@@ -2,6 +2,7 @@ import React from 'react'
 import Note from '../Note/Note'
 import ApiContext from '../ApiContext'
 import { findNote } from '../notes-helpers'
+import PropTypes from 'prop-types'
 
 export default class NotePageMain extends React.Component {
   static defaultProps = {
@@ -16,14 +17,12 @@ export default class NotePageMain extends React.Component {
   }
 
   render() {
-    console.log(findNote)
-    const { notes=[] } = this.context
+    const { notes } = this.context
     const { noteId } = this.props.match.params
-    console.log(noteId)
-    const note = findNote(notes, noteId)
-    console.log(note)
+    const note = findNote(notes, noteId) || { content:"" }
+
     return (
-       <section className='NotePageMain'>
+      <section className='NotePageMain'>
         <Note
           id={note.id}
           name={note.name}
@@ -39,3 +38,4 @@ export default class NotePageMain extends React.Component {
     )
   }
 }
+

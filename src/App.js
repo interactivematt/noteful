@@ -9,6 +9,7 @@ import AddNote from './AddNote/AddNote'
 import AddFolder from './AddFolder/AddFolder'
 import ApiContext from './ApiContext'
 import config from './config'
+import NoteError from './NoteError'
 import './index.css'
 
 class App extends Component {
@@ -130,20 +131,23 @@ class App extends Component {
     return (
       <ApiContext.Provider value={value}>
         <div className='App'>
-          <header className='App__header'>
-            <h1>
-              <Link to='/'>Noteful</Link>
-              {' '}
-            </h1>
-          </header>
-          <div className='container'>
-            <nav className='App__nav'>
-              {this.renderNavRoutes()}
-            </nav>
-            <main className='App__main'>
-              {this.renderMainRoutes()}
-            </main>
-          </div>          
+          <NoteError>
+            <header className='App__header'>
+              <h1>
+                <Link to='/'>Noteful</Link>
+                {' '}
+              </h1>
+            </header>
+            <div className='container'>
+              <nav className='App__nav'>
+                {this.renderNavRoutes()}
+              </nav>
+              <main className='App__main'>
+                {this.renderMainRoutes()}
+              </main>
+            </div>       
+          </NoteError>
+             
         </div>
       </ApiContext.Provider>
     )

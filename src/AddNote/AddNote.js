@@ -2,17 +2,35 @@ import React, { Component } from 'react'
 import NotefulForm from '../NotefulForm/NotefulForm'
 import ApiContext from '../ApiContext'
 import config from '../config'
+import PropTypes from 'prop-types'
 
 export default class AddNote extends Component {
   static defaultProps = {
     history: {
       push: () => { }
     },
+    match: {
+      params: {}
+    }
   }
   static contextType = ApiContext;
 
+  static getDerivedStateFromError(error) {
+    return { hasError: true };
+  }
+
   handleSubmit = e => {
     e.preventDefault()
+
+    if(e.target['note-name'].value === "") {
+      alert("Note name cannot be empty.")
+      return false;
+    }
+    if(e.target['note-content'].value === "") {
+      alert("Note content cannot be empty.")
+      return false;
+    }
+
     const today = new Date();
     const newNote = {
       name: e.target['note-name'].value,
@@ -37,16 +55,24 @@ export default class AddNote extends Component {
         this.props.history.push(`/folder/${note.folderId}`)
       })
       .catch(error => {
-        console.error({ error })
+        alert({ error })
       })
+      
   }
 
   render() {
     const { folders=[] } = this.context
+    const { notes=[] } = this.context
+    console.log(notes)
     return (
       <section className='AddNote'>
         <h2>Create a note</h2>
-        <NotefulForm onSubmit={this.handleSubmit}>
+        <NotefulForm 
+          onSubmit={this.handleSubmit} 
+          name={this.props.name}
+          content={this.props.content}
+          folder={this.props.folder}
+        >
           <div className='field'>
             <label htmlFor='note-name-input'>
               Name
@@ -81,4 +107,8 @@ export default class AddNote extends Component {
       </section>
     )
   }
+}
+
+AddNote.propTypes = {
+  NotefulForm: PropTypes.array
 }

@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Note from '../Note/Note'
 import CircleButton from '../CircleButton/CircleButton'
 import ApiContext from '../ApiContext'
-import { getNotesForFolder, findNote } from '../notes-helpers'
+import { getNotesForFolder } from '../notes-helpers'
 import '../index.css'
 
 export default class NoteListMain extends React.Component {
@@ -19,7 +19,7 @@ export default class NoteListMain extends React.Component {
     const { folderId } = this.props.match.params
     const { notes=[] } = this.context
     const notesForFolder = getNotesForFolder(notes, folderId)
-    console.log(findNote)
+    
     return (
       <section className='NoteListMain'>
         <div className='NoteListMain__button-container'>
