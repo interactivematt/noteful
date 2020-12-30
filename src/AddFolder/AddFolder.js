@@ -2,12 +2,14 @@ import React, { Component } from 'react'
 import NotefulForm from '../NotefulForm/NotefulForm'
 import ApiContext from '../ApiContext'
 import config from '../config'
+import PropTypes from 'prop-types'
 
 export default class AddFolder extends Component {
   static defaultProps = {
     history: {
       push: () => { }
     },
+    name: '',
   }
   static contextType = ApiContext;
 
@@ -58,4 +60,9 @@ export default class AddFolder extends Component {
       </section>
     )
   }
+}
+
+AddFolder.propTypes = {
+  name: PropTypes.string.isRequired,
+  history: PropTypes.object.isRequired
 }

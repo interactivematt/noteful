@@ -9,6 +9,9 @@ import config from '../config'
 export default class Note extends React.Component {
   static defaultProps ={
     onDeleteNote: () => {},
+    id: '',
+    name: '',
+    modified: ''
   }
   static contextType = ApiContext;
 

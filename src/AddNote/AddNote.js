@@ -9,9 +9,9 @@ export default class AddNote extends Component {
     history: {
       push: () => { }
     },
-    match: {
-      params: {}
-    }
+    name: '',
+    content: '',
+    folder: {}
   }
   static contextType = ApiContext;
 
@@ -21,7 +21,7 @@ export default class AddNote extends Component {
 
   handleSubmit = e => {
     e.preventDefault()
-
+    console.log(this.props.children)
     if(e.target['note-name'].value === "") {
       alert("Note name cannot be empty.")
       return false;
@@ -30,7 +30,10 @@ export default class AddNote extends Component {
       alert("Note content cannot be empty.")
       return false;
     }
-
+    if(e.target['note-folder-id'].value === "...") {
+      alert("Folder must be selected.")
+      return false;
+    }
     const today = new Date();
     const newNote = {
       name: e.target['note-name'].value,
@@ -57,21 +60,16 @@ export default class AddNote extends Component {
       .catch(error => {
         alert({ error })
       })
-      
+    
   }
 
   render() {
     const { folders=[] } = this.context
-    const { notes=[] } = this.context
-    console.log(notes)
     return (
       <section className='AddNote'>
         <h2>Create a note</h2>
         <NotefulForm 
-          onSubmit={this.handleSubmit} 
-          name={this.props.name}
-          content={this.props.content}
-          folder={this.props.folder}
+          onSubmit={this.handleSubmit}
         >
           <div className='field'>
             <label htmlFor='note-name-input'>
@@ -107,8 +105,12 @@ export default class AddNote extends Component {
       </section>
     )
   }
+
 }
 
 AddNote.propTypes = {
-  NotefulForm: PropTypes.array
+  name: PropTypes.string.isRequired,
+  content: PropTypes.string.isRequired,
+  folder: PropTypes.object.isRequired,
+  history: PropTypes.object.isRequired
 }
